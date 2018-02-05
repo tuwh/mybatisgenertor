@@ -224,6 +224,10 @@ public class NamePlugin extends PluginAdapter {
 
     @Override
     public boolean sqlMapInsertElementGenerated(XmlElement element, IntrospectedTable introspectedTable) {
+        if ("true".equals(PropertiesUtils.get("isGeneratedKey")) && introspectedTable.getPrimaryKeyColumns().size() > 0){
+            element.addAttribute(new Attribute("keyProperty", introspectedTable.getPrimaryKeyColumns().get(0).getJavaProperty()));
+            element.addAttribute(new Attribute("useGeneratedKeys", "true"));
+        }
         return super.sqlMapInsertElementGenerated(element, introspectedTable);
     }
 
@@ -261,6 +265,10 @@ public class NamePlugin extends PluginAdapter {
 
     @Override
     public boolean sqlMapInsertSelectiveElementGenerated(XmlElement element, IntrospectedTable introspectedTable) {
+        if ("true".equals(PropertiesUtils.get("isGeneratedKey")) && introspectedTable.getPrimaryKeyColumns().size() > 0){
+            element.addAttribute(new Attribute("keyProperty", introspectedTable.getPrimaryKeyColumns().get(0).getJavaProperty()));
+            element.addAttribute(new Attribute("useGeneratedKeys", "true"));
+        }
         return super.sqlMapInsertSelectiveElementGenerated(element, introspectedTable);
     }
 

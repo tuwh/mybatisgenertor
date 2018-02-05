@@ -33,7 +33,7 @@ public class NamePlugin extends PluginAdapter {
     public boolean clientInsertMethodGenerated(Method method, Interface interfaze,
                                                IntrospectedTable introspectedTable) {
         String javaName = introspectedTable.getTableConfiguration().getDomainObjectName();
-        method.setName("inset");
+        method.setName("insert");
         method.addJavaDocLine("/**");
         method.addJavaDocLine("* 根据主键进行新增,插入所有字段");
         method.addJavaDocLine("* @Param " + MybatisStringUtils.lowerCaseFirstChar(javaName));
@@ -71,7 +71,7 @@ public class NamePlugin extends PluginAdapter {
     @Override
     public boolean clientInsertMethodGenerated(Method method, TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         String javaName = introspectedTable.getTableConfiguration().getDomainObjectName();
-        method.setName("inset");
+        method.setName("insert");
         method.addJavaDocLine("/**");
         method.addJavaDocLine("* 新增数据");
         method.addJavaDocLine("* @Param " + MybatisStringUtils.lowerCaseFirstChar(javaName));
@@ -267,7 +267,7 @@ public class NamePlugin extends PluginAdapter {
     @Override
     public boolean clientInsertSelectiveMethodGenerated(Method method, Interface interfaze, IntrospectedTable introspectedTable) {
         String javaName = introspectedTable.getTableConfiguration().getDomainObjectName();
-        method.setName("insetSelective");
+        method.setName("insertSelective");
         method.addJavaDocLine("/**");
         method.addJavaDocLine("* 根据主键进行新增,插入非空字段");
         method.addJavaDocLine("* @Param " + MybatisStringUtils.lowerCaseFirstChar(javaName));

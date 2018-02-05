@@ -120,10 +120,6 @@ public class GeneratorHelp {
         return method;
     }
 
-
-
-
-
     private static String getQueryPaginationName(IntrospectedTable introspectedTable){
         return new StringBuffer("query") + MybatisStringUtils.upperCaseFirstChar(introspectedTable.getTableConfiguration().getDomainObjectName());
     }

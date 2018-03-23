@@ -21,7 +21,7 @@ public class GeneratorMain {
         List<String> warnings = new ArrayList<String>();
         boolean overwrite = true;
         //指向逆向工程配置文件
-        File configFile = new File("D:\\ideaworkspace\\springboottest\\src\\main\\resources\\generatorConfig.xml");
+        File configFile = new File("D:\\ideaworkspace\\mybatisgenertor\\src\\main\\resources\\generatorConfig.xml");
         ConfigurationParser cp = new ConfigurationParser(warnings);
         Configuration config = cp.parseConfiguration(configFile);
         Context context = config.getContexts().get(0);

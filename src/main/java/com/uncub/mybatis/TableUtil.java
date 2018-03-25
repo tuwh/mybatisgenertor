@@ -13,6 +13,6 @@ public class TableUtil {
         for (String str : strs){
             javaName += StringUtils.upperCase(str.substring(0,1)) + str.substring(1,str.length());
         }
-        return javaName;
+        return javaName + PropertiesUtils.get("modelSuffix");
     }
 }

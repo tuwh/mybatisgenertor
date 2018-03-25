@@ -18,16 +18,16 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
         <!-- 生成模型的包名和位置-->
-        <javaModelGenerator targetPackage="com.uncub.blog.dto" targetProject="D:\ideaworkspace\mysqltest\src">
+        <javaModelGenerator targetPackage="com.uncub.blog.dto.base" targetProject="D:\ideaworkspace\mysqltest\src">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
         <!-- 生成映射文件的包名和位置-->
-        <sqlMapGenerator targetPackage="mybatis.mapper" targetProject="D:\ideaworkspace\mysqltest\src\">
+        <sqlMapGenerator targetPackage="mybatis.mapper.base" targetProject="D:\ideaworkspace\mysqltest\src\">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!-- 生成DAO的包名和位置-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.uncub.blog.dao" targetProject="D:\ideaworkspace\mysqltest\src">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.uncub.blog.dao.base" targetProject="D:\ideaworkspace\mysqltest\src">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名-->

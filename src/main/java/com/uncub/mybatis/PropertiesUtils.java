@@ -1,5 +1,7 @@
 package com.uncub.mybatis;
 
+import org.apache.commons.lang.StringUtils;
+
 import java.io.IOException;
 import java.util.Properties;
 
@@ -15,7 +17,8 @@ public class PropertiesUtils {
     }
 
     public static String get(String key){
-        return (String) properties.get(key);
+        String value = (String) properties.get(key);
+        return StringUtils.isBlank(value) ? "" : value;
     }
 
 }

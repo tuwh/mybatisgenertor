@@ -8,6 +8,7 @@ import org.mybatis.generator.api.dom.xml.Document;
 import org.mybatis.generator.api.dom.xml.XmlElement;
 
 import java.util.List;
+import java.util.Set;
 
 public class NamePlugin extends PluginAdapter {
     @Override
@@ -160,6 +161,11 @@ public class NamePlugin extends PluginAdapter {
             field.addAnnotation("* " + introspectedColumn.getRemarks());
             field.addAnnotation("*/");
         }
+        if("true".equalsIgnoreCase(PropertiesUtils.get("isNotNullSupport")) && !introspectedColumn.isNullable()){
+            Set<FullyQualifiedJavaType> fullyQualifiedJavaTypes = topLevelClass.getImportedTypes();
+            topLevelClass.addImportedType("javax.validation.constraints.NotNull");
+            field.addAnnotation("@NotNull");
+        }
         return super.modelFieldGenerated(field, topLevelClass, introspectedColumn, introspectedTable, modelClassType);
     }
 
@@ -190,6 +196,11 @@ public class NamePlugin extends PluginAdapter {
             topLevelClass.addAnnotation("/**");
             topLevelClass.addAnnotation("* " + introspectedTable.getRemarks());
             topLevelClass.addAnnotation("/**");
+        }
+        if ("true".equalsIgnoreCase(PropertiesUtils.get("isSerializable"))){
+            FullyQualifiedJavaType fullyQualifiedJavaType = new FullyQualifiedJavaType("java.io.Serializable");
+            topLevelClass.addImportedType(fullyQualifiedJavaType);
+            topLevelClass.addSuperInterface(fullyQualifiedJavaType);
         }
         return true;
     }
